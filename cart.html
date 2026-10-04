@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Greenden - Shopping Cart</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+</head>
+
+
+<body class="bg-gray-50 text-gray-800">
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+
+        <nav class="max-w-7xl mx-auto px-5 py-4
+                    flex items-center justify-between">
+
+            <!-- Logo -->
+
+            <a href="index.html" class="text-2xl font-bold text-green-700">
+
+                Greenden
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <div class="hidden md:flex items-center gap-8">
+
+                <a href="index.html" class="hover:text-green-700 transition">
+
+                    Home
+
+                </a>
+
+
+                <a href="product.html" class="hover:text-green-700 transition">
+
+                    Products
+
+                </a>
+
+
+                <a href="contact.html" class="hover:text-green-700 transition">
+
+                    Contact
+
+                </a>
+
+
+                <a href="cart.html" class="text-green-700 font-medium">
+
+                    🛒 Cart
+
+                    <span id="cartCount" class="bg-green-700
+                                 text-white
+                                 text-xs
+                                 rounded-full
+                                 px-2 py-1 ml-1">
+
+                        0
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- Mobile Button -->
+
+            <button id="menuButton" class="md:hidden
+                           text-2xl
+                           text-green-700">
+
+                ☰
+
+            </button>
+
+        </nav>
+
+
+        <!-- Mobile Navigation -->
+
+        <div id="mobileMenu" class="hidden
+                    md:hidden
+                    border-t
+                    bg-white
+                    px-5
+                    py-5">
+
+            <div class="flex flex-col gap-4">
+
+                <a href="index.html">
+
+                    Home
+
+                </a>
+
+
+                <a href="product.html">
+
+                    Products
+
+                </a>
+
+
+                <a href="contact.html">
+
+                    Contact
+
+                </a>
+
+
+                <a href="cart.html" class="text-green-700 font-medium">
+
+                    🛒 Cart
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="bg-green-100">
+
+        <div class="max-w-7xl mx-auto
+                    px-5
+                    py-14
+                    text-center">
+
+            <p class="text-green-700
+                      font-semibold">
+
+                Your Shopping Bag
+
+            </p>
+
+
+            <h1 class="text-4xl md:text-5xl
+                       font-bold mt-3">
+
+                Shopping Cart 🛒
+
+            </h1>
+
+
+            <p class="text-gray-600
+                      mt-4">
+
+                Review your plants before checkout.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CART SECTION ================= -->
+
+    <main class="max-w-7xl
+                 mx-auto
+                 px-5
+                 py-12">
+
+
+        <div class="grid
+                    lg:grid-cols-3
+                    gap-8">
+
+
+            <!-- ================= CART ITEMS ================= -->
+
+            <div class="lg:col-span-2">
+
+
+                <div class="bg-white
+                            rounded-2xl
+                            shadow-sm
+                            p-6">
+
+
+                    <div class="flex
+                                items-center
+                                justify-between
+                                mb-6">
+
+                        <h2 class="text-2xl
+                                   font-bold">
+
+                            Your Items
+
+                        </h2>
+
+
+                        <span id="summaryItems" class="text-gray-500">
+
+                            0 items
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Cart Items -->
+
+                    <div id="cartItems">
+
+                        <!-- JavaScript will add products here -->
+
+                    </div>
+
+
+                    <!-- Empty Cart -->
+
+                    <div id="emptyCart" class="hidden
+                                text-center
+                                py-12">
+
+
+                        <div class="text-6xl mb-5">
+
+                            🛒
+
+                        </div>
+
+
+                        <h3 class="text-2xl
+                                   font-semibold">
+
+                            Your cart is empty
+
+                        </h3>
+
+
+                        <p class="text-gray-500
+                                  mt-2">
+
+                            Looks like you haven't
+                            added any plants yet.
+
+                        </p>
+
+
+                        <a href="product.html" class="inline-block
+                                  mt-6
+                                  bg-green-700
+                                  text-white
+                                  px-7 py-3
+                                  rounded-lg
+                                  hover:bg-green-800
+                                  transition">
+
+                            Start Shopping
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ORDER SUMMARY ================= -->
+
+            <div>
+
+
+                <div class="bg-white
+                            rounded-2xl
+                            shadow-sm
+                            p-6
+                            sticky
+                            top-24">
+
+
+                    <h2 class="text-2xl
+                               font-bold
+                               mb-6">
+
+                        Order Summary
+
+                    </h2>
+
+
+                    <!-- Items -->
+
+                    <div class="flex
+                                justify-between
+                                py-3
+                                border-b">
+
+                        <span class="text-gray-600">
+
+                            Items
+
+                        </span>
+
+
+                        <span id="subtotal" class="font-medium">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Shipping -->
+
+                    <div class="flex
+                                justify-between
+                                py-3
+                                border-b">
+
+                        <span class="text-gray-600">
+
+                            Shipping
+
+                        </span>
+
+
+                        <span id="shipping" class="font-medium">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Tax -->
+
+                    <div class="flex
+                                justify-between
+                                py-3
+                                border-b">
+
+                        <span class="text-gray-600">
+
+                            Tax
+
+                        </span>
+
+
+                        <span id="tax" class="font-medium">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Discount -->
+
+                    <div class="flex
+                                justify-between
+                                py-3
+                                border-b">
+
+                        <span class="text-gray-600">
+
+                            Discount
+
+                        </span>
+
+
+                        <span id="discount" class="font-medium
+                                     text-green-600">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- Total -->
+
+                    <div class="flex
+                                justify-between
+                                py-5">
+
+                        <span class="text-xl
+                                     font-bold">
+
+                            Total
+
+                        </span>
+
+
+                        <span id="total" class="text-xl
+                                     font-bold
+                                     text-green-700">
+
+                            ₹0
+
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Promo Code -->
+
+                    <div class="mb-5">
+
+
+                        <label for="promoInput" class="block
+                                   font-medium
+                                   mb-2">
+
+                            Promo Code
+
+                        </label>
+
+
+                        <div class="flex gap-2">
+
+                            <input type="text" id="promoInput" placeholder="Enter code" class="min-w-0
+                                       flex-1
+                                       border
+                                       border-gray-300
+                                       rounded-lg
+                                       px-3
+                                       py-2
+                                       outline-none
+                                       focus:border-green-600">
+
+
+                            <button onclick="applyPromo()" class="bg-gray-800
+                                       text-white
+                                       px-4
+                                       py-2
+                                       rounded-lg
+                                       hover:bg-gray-900
+                                       transition">
+
+                                Apply
+
+                            </button>
+
+                        </div>
+
+
+                        <p id="promoMessage" class="text-sm mt-2">
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Checkout -->
+
+                    <button onclick="checkout()" class="w-full
+                               bg-green-700
+                               text-white
+                               py-3
+                               rounded-lg
+                               font-semibold
+                               hover:bg-green-800
+                               transition">
+
+                        Proceed to Checkout
+
+                    </button>
+
+
+                    <!-- Continue Shopping -->
+
+                    <a href="product.html" class="block
+                              text-center
+                              mt-4
+                              text-green-700
+                              font-medium
+                              hover:text-green-900">
+
+                        ← Continue Shopping
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="bg-green-700">
+
+        <div class="max-w-4xl
+                    mx-auto
+                    px-5
+                    py-16
+                    text-center
+                    text-white">
+
+            <h2 class="text-3xl md:text-4xl
+                       font-bold">
+
+                Stay Updated With Greenden
+
+            </h2>
+
+
+            <p class="mt-4 text-green-100">
+
+                Subscribe for plant-care tips,
+                new arrivals and special offers.
+
+            </p>
+
+
+            <form onsubmit="subscribeNewsletter(event)" class="mt-8
+                       flex flex-col
+                       sm:flex-row
+                       gap-3
+                       max-w-xl
+                       mx-auto">
+
+                <input id="newsletterEmail" type="email" placeholder="Enter your email" required class="flex-1
+                           px-5
+                           py-3
+                           rounded-lg
+                           text-gray-800
+                           outline-none">
+
+
+                <button type="submit" class="bg-white
+                           text-green-700
+                           px-7
+                           py-3
+                           rounded-lg
+                           font-semibold
+                           hover:bg-green-50
+                           transition">
+
+                    Subscribe
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-gray-900
+                   text-white">
+
+        <div class="max-w-7xl
+                    mx-auto
+                    px-5
+                    py-14">
+
+            <div class="grid
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                        gap-10">
+
+
+                <!-- Brand -->
+
+                <div>
+
+                    <h2 class="text-2xl
+                               font-bold
+                               text-green-400">
+
+                        Greenden
+
+                    </h2>
+
+
+                    <p class="text-gray-400
+                              mt-4
+                              leading-relaxed">
+
+                        Bring nature closer to your
+                        home with our beautiful
+                        collection of plants.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Quick Links -->
+
+                <div>
+
+                    <h3 class="font-semibold
+                               text-lg
+                               mb-5">
+
+                        Quick Links
+
+                    </h3>
+
+
+                    <div class="flex
+                                flex-col
+                                gap-3
+                                text-gray-400">
+
+                        <a href="index.html" class="hover:text-white">
+
+                            Home
+
+                        </a>
+
+
+                        <a href="product.html" class="hover:text-white">
+
+                            Products
+
+                        </a>
+
+
+                        <a href="contact.html" class="hover:text-white">
+
+                            Contact
+
+                        </a>
+
+
+                        <a href="cart.html" class="hover:text-white">
+
+                            Cart
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Categories -->
+
+                <div>
+
+                    <h3 class="font-semibold
+                               text-lg
+                               mb-5">
+
+                        Categories
+
+                    </h3>
+
+
+                    <div class="flex
+                                flex-col
+                                gap-3
+                                text-gray-400">
+
+                        <a href="product.html" class="hover:text-white">
+
+                            Indoor Plants
+
+                        </a>
+
+
+                        <a href="product.html" class="hover:text-white">
+
+                            Outdoor Plants
+
+                        </a>
+
+
+                        <a href="product.html" class="hover:text-white">
+
+                            Air Purifying Plants
+
+                        </a>
+
+
+                        <a href="product.html" class="hover:text-white">
+
+                            Succulents
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Contact -->
+
+                <div>
+
+                    <h3 class="font-semibold
+                               text-lg
+                               mb-5">
+
+                        Contact Me
+
+                    </h3>
+
+
+                    <div class="text-gray-400
+                                space-y-4">
+
+
+                        <p>
+
+                            👤
+
+                            <span class="text-white">
+
+                                Naveen Kumar
+
+                            </span>
+
+                        </p>
+
+
+                        <p>
+
+                            📧
+
+                            <a href="mailto:naveenkumardau1997@gmail.com" class="hover:text-white
+                                       break-all">
+
+                                naveenkumardau1997@gmail.com
+
+                            </a>
+
+                        </p>
+
+
+                        <p>
+
+                            📞
+
+                            <a href="tel:9965818906" class="hover:text-white">
+
+                                9965818906
+
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Footer Bottom -->
+
+            <div class="border-t
+                        border-gray-700
+                        mt-12
+                        pt-7
+                        flex
+                        flex-col
+                        md:flex-row
+                        justify-between
+                        items-center
+                        gap-4">
+
+
+                <p class="text-gray-500
+                          text-sm">
+
+                    © 2026 Greenden.
+                    All Rights Reserved.
+
+                </p>
+
+
+                <p class="text-gray-500
+                          text-sm">
+
+                    Designed & Developed by
+
+                    <span class="text-green-400">
+
+                        Naveen Kumar
+
+                    </span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/script.js"></script>
+
+
+    <!-- Mobile Menu -->
+
+    <script>
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    mobileMenu.classList.toggle(
+                        "hidden"
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
